@@ -23,3 +23,7 @@ Careful, it will run on **[demo website](https://flyersweb.github.io/sharetc)**.
 ```
 npm test
 ```
+
+## Feedbacks
+
+If you like this service and want to integrate more functionalities [contact me](contact@flyers-web.org). 
