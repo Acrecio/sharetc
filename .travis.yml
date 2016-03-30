@@ -13,7 +13,7 @@ install:
   
 branches:
   only:
-    - gh-pages
+    - master
 
 before_script:
   - "export DISPLAY=:99.0"
