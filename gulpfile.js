@@ -8,6 +8,8 @@ var through = require('through2');
 var webpack = require('webpack-stream');
 
 gulp.task("default", function () {
+  gulp.src("node_modules/cilpboard/dist/clipboard.min.js")
+    .pipe(gulp.dest("dist"));
   return gulp.src(["src/**/*.js"])
     .pipe(named())
     .pipe(webpack({
