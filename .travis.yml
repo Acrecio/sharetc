@@ -7,6 +7,7 @@ before_install:
   - "npm config set spin false"
   - "npm --version"
   - "phantomjs --version"
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 
 install:
   - "npm install"
@@ -20,11 +21,11 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 
-before_install:
-  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
-
 addons:
   sauce_connect:
     username: "flyersweb"
     access_key:
-      - secure : "NmCEYOtJo+zALWCCAB6vHYEB88CTriBzUyq6ZLox5eg0focw/Pxp/PvUqmdCHT0Rximz7auVR6CJ1kgFkOnCnqGed8FAamfzlUX6TUPaOXk+2L1pXGRJ5J8WgW7V82seyaNj6omFN2Reqq4RNfDbjSK4GU5Jyr0LrAAYDipAkxfhnDpPer7J/WrKgRW+RUbHGtHTzaQAddQ+5NqGVW6B5vUCMVEJYzGLHMghRzOdh2/ZhQyzSgGyrmFxvIa/6xB5kyl2Mzr8oKhx8a1atM94hzgbC9YsxZ4h0qw/9vPVHmESysjqfMODgltiQ/ItSc/FNnrBIh1KTCNgkkIFwMx31BMgEtKYr+/caue8zyfBmnrDkclewWyxOVbI77HVVbgxti+JVU237mx4RuTD5QtuhFfORYEcmTlMh0aW6908w/7dizz4LeRgNoE39IfamKHIeeeE9jLv/U59KefnVg7/7wqiHfoQEvjBb/yM6mE5U5zZhSMt7vLC7eXX9O302jYQ0jmhIWVxuRviVZblXjekfCNKFV4qMHtBkXwi4OIiVDG0dT0ITU0Z7+C9EXlRSXUIrXfQdTbqg+HOKl4MiFWHsyg7BY4+pitATZeR8PR8LAcVbLYePi3wHwmh+cGVg9+1a7a6HnGIPSIXfI1DLveDery2YgbezgRxsiJQXQrb1fY="
+      secure : "NmCEYOtJo+zALWCCAB6vHYEB88CTriBzUyq6ZLox5eg0focw/Pxp/PvUqmdCHT0Rximz7auVR6CJ1kgFkOnCnqGed8FAamfzlUX6TUPaOXk+2L1pXGRJ5J8WgW7V82seyaNj6omFN2Reqq4RNfDbjSK4GU5Jyr0LrAAYDipAkxfhnDpPer7J/WrKgRW+RUbHGtHTzaQAddQ+5NqGVW6B5vUCMVEJYzGLHMghRzOdh2/ZhQyzSgGyrmFxvIa/6xB5kyl2Mzr8oKhx8a1atM94hzgbC9YsxZ4h0qw/9vPVHmESysjqfMODgltiQ/ItSc/FNnrBIh1KTCNgkkIFwMx31BMgEtKYr+/caue8zyfBmnrDkclewWyxOVbI77HVVbgxti+JVU237mx4RuTD5QtuhFfORYEcmTlMh0aW6908w/7dizz4LeRgNoE39IfamKHIeeeE9jLv/U59KefnVg7/7wqiHfoQEvjBb/yM6mE5U5zZhSMt7vLC7eXX9O302jYQ0jmhIWVxuRviVZblXjekfCNKFV4qMHtBkXwi4OIiVDG0dT0ITU0Z7+C9EXlRSXUIrXfQdTbqg+HOKl4MiFWHsyg7BY4+pitATZeR8PR8LAcVbLYePi3wHwmh+cGVg9+1a7a6HnGIPSIXfI1DLveDery2YgbezgRxsiJQXQrb1fY="
+
+script:
+  - "node tests/upload/form-present.js"
