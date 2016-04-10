@@ -14,7 +14,7 @@ install:
 
 branches:
   only:
-    - master
+    - travis
 
 before_script:
   - "export DISPLAY=:99.0"
@@ -24,8 +24,8 @@ before_script:
 addons:
   sauce_connect:
     username: "flyersweb"
-    access_key:
-      secure : "NmCEYOtJo+zALWCCAB6vHYEB88CTriBzUyq6ZLox5eg0focw/Pxp/PvUqmdCHT0Rximz7auVR6CJ1kgFkOnCnqGed8FAamfzlUX6TUPaOXk+2L1pXGRJ5J8WgW7V82seyaNj6omFN2Reqq4RNfDbjSK4GU5Jyr0LrAAYDipAkxfhnDpPer7J/WrKgRW+RUbHGtHTzaQAddQ+5NqGVW6B5vUCMVEJYzGLHMghRzOdh2/ZhQyzSgGyrmFxvIa/6xB5kyl2Mzr8oKhx8a1atM94hzgbC9YsxZ4h0qw/9vPVHmESysjqfMODgltiQ/ItSc/FNnrBIh1KTCNgkkIFwMx31BMgEtKYr+/caue8zyfBmnrDkclewWyxOVbI77HVVbgxti+JVU237mx4RuTD5QtuhFfORYEcmTlMh0aW6908w/7dizz4LeRgNoE39IfamKHIeeeE9jLv/U59KefnVg7/7wqiHfoQEvjBb/yM6mE5U5zZhSMt7vLC7eXX9O302jYQ0jmhIWVxuRviVZblXjekfCNKFV4qMHtBkXwi4OIiVDG0dT0ITU0Z7+C9EXlRSXUIrXfQdTbqg+HOKl4MiFWHsyg7BY4+pitATZeR8PR8LAcVbLYePi3wHwmh+cGVg9+1a7a6HnGIPSIXfI1DLveDery2YgbezgRxsiJQXQrb1fY="
+    access_key: "321cf91d-1040-4b8d-b982-f360c629c4af"
+#      secure : "NmCEYOtJo+zALWCCAB6vHYEB88CTriBzUyq6ZLox5eg0focw/Pxp/PvUqmdCHT0Rximz7auVR6CJ1kgFkOnCnqGed8FAamfzlUX6TUPaOXk+2L1pXGRJ5J8WgW7V82seyaNj6omFN2Reqq4RNfDbjSK4GU5Jyr0LrAAYDipAkxfhnDpPer7J/WrKgRW+RUbHGtHTzaQAddQ+5NqGVW6B5vUCMVEJYzGLHMghRzOdh2/ZhQyzSgGyrmFxvIa/6xB5kyl2Mzr8oKhx8a1atM94hzgbC9YsxZ4h0qw/9vPVHmESysjqfMODgltiQ/ItSc/FNnrBIh1KTCNgkkIFwMx31BMgEtKYr+/caue8zyfBmnrDkclewWyxOVbI77HVVbgxti+JVU237mx4RuTD5QtuhFfORYEcmTlMh0aW6908w/7dizz4LeRgNoE39IfamKHIeeeE9jLv/U59KefnVg7/7wqiHfoQEvjBb/yM6mE5U5zZhSMt7vLC7eXX9O302jYQ0jmhIWVxuRviVZblXjekfCNKFV4qMHtBkXwi4OIiVDG0dT0ITU0Z7+C9EXlRSXUIrXfQdTbqg+HOKl4MiFWHsyg7BY4+pitATZeR8PR8LAcVbLYePi3wHwmh+cGVg9+1a7a6HnGIPSIXfI1DLveDery2YgbezgRxsiJQXQrb1fY="
 
 script:
   - "node tests/upload/form-present.js"
