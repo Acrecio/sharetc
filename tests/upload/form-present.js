@@ -1,4 +1,5 @@
 'use strict';
+var os = require("os");
 var test = require("tape");
 
 var isWin = /^win/.test(process.platform);
@@ -6,8 +7,8 @@ const psep = (isWin) ? "\\" : "/";
 const baseUrl = "https://flyersweb.github.com/sharetc";
 const basePath = __dirname+psep+".."+psep+".."+psep;
 
-username = os.environ["SAUCE_USERNAME"]
-access_key = os.environ["SAUCE_ACCESS_KEY"]
+username = os.environ["SAUCE_USERNAME"] || "";
+access_key = os.environ["SAUCE_ACCESS_KEY"] || "";
 capabilities["tunnel-identifier"] = os.environ["TRAVIS_JOB_NUMBER"]
 capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]
 capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
