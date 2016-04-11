@@ -1,6 +1,8 @@
 'use strict';
 var test = require("tape");
 
+var isTravis = process.env.TRAVIS || false;
+
 var isWin = /^win/.test(process.platform);
 const psep = (isWin) ? "\\" : "/";
 const baseUrl = "https://flyersweb.github.com/sharetc";
@@ -11,7 +13,6 @@ var access_key = process.env.SAUCE_ACCESS_KEY || "";
 var capabilities = {};
 capabilities["tunnel-identifier"] = process.env.TRAVIS_JOB_NUMBER
 capabilities["build"] = process.env.TRAVIS_BUILD_NUMBER
-capabilities["tags"] = [process.env.TRAVIS_PYTHON_VERSION, "CI"]
 var hub_url = "%s:%s@localhost:4445" % (username, access_key)
 
 var assert = require('chai').assert;
@@ -20,19 +21,27 @@ var webdriver = require('selenium-webdriver'),
     By = require('selenium-webdriver').By,
     until = require('selenium-webdriver').until;
 
+if(isTravis) {
 var driver = new webdriver.Builder()
     .withCapabilities(capabilities)
     .forBrowser('firefox')
+    .usingServer("http://"+hub_url+"/wd/hub")
     .build();
-
-// var driver = webdriver.Remote(desired_capabilities=capabilities, command_executor="http://%s/wd/hub" % hub_url);
 
 var driver2 = new webdriver.Builder()
     .withCapabilities(capabilities)
     .forBrowser('firefox')
+    .usingServer("http://"+hub_url+"/wd/hub")
+    .build();
+  } else {
+var driver = new webdriver.Builder()
+    .forBrowser('firefox')
     .build();
 
-// var driver2 = webdriver.Remote(desired_capabilities=capabilities, command_executor="http://%s/wd/hub" % hub_url);
+var driver2 = new webdriver.Builder()
+    .forBrowser('firefox')
+    .build();
+  }
 
 test('is form accessible', function (t) {
 
