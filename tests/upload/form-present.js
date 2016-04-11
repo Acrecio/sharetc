@@ -1,5 +1,4 @@
 'use strict';
-var os = require("os");
 var test = require("tape");
 
 var isWin = /^win/.test(process.platform);
@@ -7,12 +6,13 @@ const psep = (isWin) ? "\\" : "/";
 const baseUrl = "https://flyersweb.github.com/sharetc";
 const basePath = __dirname+psep+".."+psep+".."+psep;
 
-username = os.environ["SAUCE_USERNAME"] || "";
-access_key = os.environ["SAUCE_ACCESS_KEY"] || "";
-capabilities["tunnel-identifier"] = os.environ["TRAVIS_JOB_NUMBER"]
-capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]
-capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
-hub_url = "%s:%s@localhost:4445" % (username, access_key)
+var username = process.env.SAUCE_USERNAME || "";
+var access_key = process.env.SAUCE_ACCESS_KEY || "";
+var capabilities = {};
+capabilities["tunnel-identifier"] = process.env.TRAVIS_JOB_NUMBER
+capabilities["build"] = process.env.TRAVIS_BUILD_NUMBER
+capabilities["tags"] = [process.env.TRAVIS_PYTHON_VERSION, "CI"]
+var hub_url = "%s:%s@localhost:4445" % (username, access_key)
 
 var assert = require('chai').assert;
 
@@ -20,17 +20,19 @@ var webdriver = require('selenium-webdriver'),
     By = require('selenium-webdriver').By,
     until = require('selenium-webdriver').until;
 
-// var driver = new webdriver.Builder()
-//     .forBrowser('firefox')
-//     .build();
+var driver = new webdriver.Builder()
+    .withCapabilities(capabilities)
+    .forBrowser('firefox')
+    .build();
 
-var driver = webdriver.Remote(desired_capabilities=capabilities, command_executor="http://%s/wd/hub" % hub_url);
+// var driver = webdriver.Remote(desired_capabilities=capabilities, command_executor="http://%s/wd/hub" % hub_url);
 
-// var driver2 = new webdriver.Builder()
-//     .forBrowser('firefox')
-//     .build();
+var driver2 = new webdriver.Builder()
+    .withCapabilities(capabilities)
+    .forBrowser('firefox')
+    .build();
 
-var driver2 = webdriver.Remote(desired_capabilities=capabilities, command_executor="http://%s/wd/hub" % hub_url);
+// var driver2 = webdriver.Remote(desired_capabilities=capabilities, command_executor="http://%s/wd/hub" % hub_url);
 
 test('is form accessible', function (t) {
 
@@ -56,7 +58,7 @@ test('is form accessible', function (t) {
       vKey = val;
       setTimeout(function(){
         d.fulfill( driver.findElement(By.id("link")) );
-      },3000);
+      },10000);
       return d.promise;
     })
     .then(function(link){
