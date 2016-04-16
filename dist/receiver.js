@@ -51,7 +51,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* 0 */
 /***/function (module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(5);
+	module.exports = __webpack_require__(4);
 
 	/***/
 },,
@@ -63,7 +63,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	(function () {
 		var opts = {
-			apiKey: 'YOUR-API-KEY'
+			apiKey: 'ueom2eryn6n1m7vi'
 		};
 		module.exports = opts;
 	})();
@@ -228,9 +228,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	});
 
 	/***/
-},,
+},
 /* 4 */
-/* 5 */
 /***/function (module, exports, __webpack_require__) {
 
 	'use strict';

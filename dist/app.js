@@ -176,7 +176,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	(function () {
 		var opts = {
-			apiKey: 'YOUR-API-KEY'
+			apiKey: 'ueom2eryn6n1m7vi'
 		};
 		module.exports = opts;
 	})();
