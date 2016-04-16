@@ -5,15 +5,15 @@ var isTravis = process.env.TRAVIS || false;
 
 var isWin = /^win/.test(process.platform);
 const psep = (isWin) ? "\\" : "/";
-const baseUrl = "https://flyersweb.github.com/sharetc";
-const basePath = __dirname+psep+".."+psep+".."+psep;
+const baseUrl = "http://flyers-web.org/sharetc";
+const basePath = __dirname+psep+".."+psep;
 
 var username = process.env.SAUCE_USERNAME || "";
 var access_key = process.env.SAUCE_ACCESS_KEY || "";
 var capabilities = {};
 capabilities["tunnel-identifier"] = process.env.TRAVIS_JOB_NUMBER
 capabilities["build"] = process.env.TRAVIS_BUILD_NUMBER
-var hub_url = "%s:%s@localhost:4445" % (username, access_key)
+var hub_url = username+":"+access_key+"@localhost:4445";
 
 var assert = require('chai').assert;
 
@@ -22,41 +22,48 @@ var webdriver = require('selenium-webdriver'),
     until = require('selenium-webdriver').until;
 
 if(isTravis) {
-var driver = new webdriver.Builder()
-    .withCapabilities(capabilities)
-    .forBrowser('firefox')
-    .usingServer("http://"+hub_url+"/wd/hub")
-    .build();
+  var driver = new webdriver.Builder()
+      .withCapabilities(capabilities)
+      .forBrowser('firefox')
+      .usingServer("http://"+hub_url+"/wd/hub")
+      .build();
 
-var driver2 = new webdriver.Builder()
-    .withCapabilities(capabilities)
-    .forBrowser('firefox')
-    .usingServer("http://"+hub_url+"/wd/hub")
-    .build();
-  } else {
-var driver = new webdriver.Builder()
-    .forBrowser('firefox')
-    .build();
+  var driver2 = new webdriver.Builder()
+      .withCapabilities(capabilities)
+      .forBrowser('firefox')
+      .usingServer("http://"+hub_url+"/wd/hub")
+      .build();
+} else {
+ var driver = new webdriver.Builder()
+     .withCapabilities(capabilities)
+     .forBrowser('firefox')
+     .build();
 
-var driver2 = new webdriver.Builder()
-    .forBrowser('firefox')
-    .build();
-  }
+ var driver2 = new webdriver.Builder()
+     .withCapabilities(capabilities)
+     .forBrowser('firefox')
+     .build();
+}
 
 test('is form accessible', function (t) {
 
     var vKey = "";
     var vLink = "";
 
-    driver.get(baseUrl+"/index.html")
+    driver.get(baseUrl+"/")
     .then(function(){
       return driver.findElement(By.id('archive'));
     })
     .then(function(element){
-      return element.sendKeys(basePath+psep+"Test_document_PDF.pdf");
+      var file = basePath+"Test_document_PDF.pdf";
+      return element.sendKeys(file);
     })
     .then(function(){
-      return driver.findElement(By.id("key"));
+      var d = webdriver.promise.defer();
+      setTimeout(function(){
+        d.fulfill( driver.findElement(By.id("key")) );
+      },10000);
+      return d.promise;
     })
     .then(function(element){
       return element.getAttribute("value");
@@ -79,7 +86,7 @@ test('is form accessible', function (t) {
       return driver.findElement(By.id('copy-btn'));
     })
     .then(function(){
-      return driver2.get(baseUrl+vLink);
+      return driver2.get(vLink);
     })
     .then(function(){
       return driver2.findElement(By.id('key')).sendKeys(vKey);
