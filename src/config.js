@@ -2,7 +2,7 @@
 
 (function(){
   const opts = {
-    apiKey : 'YOUR-API-KEY'
+    apiKey : 'ueom2eryn6n1m7vi'
   };
   module.exports = opts;
 })();
