@@ -4,7 +4,7 @@
   "description": "Securely share your files",
   "main": "dist/app.js",
   "scripts": {
-    "test": "SELENIUM_REMOTE_URL=\"http://172.28.128.1:4444/wd/hub\" node tests/**/*.js"
+    "test": "SELENIUM_REMOTE_URL=\"http://seleniumserver:4444/wd/hub\" node tests/**/*.js"
   },
   "repository": {
     "type": "git",
