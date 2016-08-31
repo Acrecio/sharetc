@@ -24,6 +24,13 @@ Careful, it will run on **[demo website](https://flyersweb.github.io/sharetc)**.
 npm test
 ```
 
+## Using Docker :
+
+```
+docker build -t sharetc .
+docker run -d -p 127.0.0.1:80:3000 sharetc
+```
+
 ## Feedbacks
 
 If you like this service and want to integrate more functionalities [contact me](contact@flyers-web.org). 

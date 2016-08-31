@@ -4,7 +4,8 @@
   "description": "Securely share your files",
   "main": "dist/app.js",
   "scripts": {
-    "test": "SELENIUM_REMOTE_URL=\"http://seleniumserver:4444/wd/hub\" node tests/**/*.js"
+    "test": "SELENIUM_REMOTE_URL=\"http://seleniumserver:4444/wd/hub\" node tests/**/*.js",
+    "start": "node --harmony index.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
   "babel": {},
   "dependencies": {
     "clipboard": "^1.5.9",
-    "crel": "^2.1.8"
+    "crel": "^2.1.8",
+    "express": "^4.14.0"
   }
 }
