@@ -1,0 +1,12 @@
+textarea {
+    height: 350px;
+}
+
+.mat-form-field {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.form-container {
+    background-color: rgba(0, 0, 0, 0.03);
+}

@@ -1,0 +1,56 @@
+<h1>Securely share your files without server</h1>
+
+<div fxLayout="column" fxLayoutAlign="space-between">
+
+    <p>
+        ShareTC is a service allowing you to securely share file with someone else. It works without any server,
+        your browser will act as the sender, so keep your browser open while sending. The service do not use any
+        server thanks to the RTC peer-to-peer technology.
+        You'll need to communicate the generated key to your receiver to be able to send a file.
+    </p>
+
+    <div class="form-container">
+        <form [formGroup]="configForm" (ngSubmit)="onSubmitConnect()">
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <mat-form-field appearance="fill">
+                    <textarea matInput readonly formControlName="sdp_sender">
+                        {{sdp_sender}}
+                    </textarea>
+                    <mat-hint>
+                        Generated configuration that you need to share with the receiver
+                    </mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-label>
+                        Receiver configuration
+                    </mat-label>
+                    <textarea matInput formControlName="sdp_receiver">
+                        {{sdp_receiver}}
+                    </textarea>
+                    <mat-hint>
+                        Copy the receiver generated configuration and click connect
+                    </mat-hint>
+                </mat-form-field>
+                <input type="submit" value="Connect" [disabled]="isConnected">
+            </div>
+        </form>
+    </div>
+
+    <p>
+        To send the file share your generated configuration with receiver. Copy receiver generated configuration and
+        connect.
+    </p>
+
+    <div class="form-container form-upload" [hidden]="!isConnected">
+        <form [formGroup]="uploadForm" (ngSubmit)="onSubmitUpload()">
+            <label>
+                Upload a file
+            </label>
+            <input type="file" formControlName="file" (change)="onFileChange($event)">
+            <input type="submit" value="Send" [disabled]="!isLoaded">
+            <div class="progress" [hidden]="!isLoading">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        </form>
+    </div>
+</div>
