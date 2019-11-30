@@ -1,4 +1,4 @@
-# ShareTC
+# ShareTC [![Build Status](https://travis-ci.org/FlyersWeb/sharetc.svg?branch=upgrade)](https://travis-ci.org/FlyersWeb/sharetc)
 
 *share your file securely without server*
 
