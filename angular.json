@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test-sharetc": {
+    "sharetc": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/test-sharetc",
+            "outputPath": "dist/sharetc",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "test-sharetc:build"
+            "browserTarget": "sharetc:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "test-sharetc:build:production"
+              "browserTarget": "sharetc:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "test-sharetc:build"
+            "browserTarget": "sharetc:build"
           }
         },
         "test": {
@@ -113,16 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "test-sharetc:serve"
+            "devServerTarget": "sharetc:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "test-sharetc:serve:production"
+              "devServerTarget": "sharetc:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "test-sharetc"
+  "defaultProject": "sharetc"
 }

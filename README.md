@@ -23,8 +23,6 @@ ng serve
 
 ## To run tests:
 
-Careful, it will run on **[demo website](https://flyersweb.github.io/sharetc)**.
-
 ```
 npm run test
 ```
