@@ -1,0 +1,28 @@
+<h1>Securely share your files without server</h1>
+
+<div fxLayout="column" fxLayoutAlign="space-between">
+    <p>
+        ShareTC is a service allowing you to securely share file with someone else.
+        It works without any server, your browser will act as the sender, so keep your browser open while sending.
+        The service do not use any server thanks to the RTC peer-to-peer technology.
+        You'll need to communicate the generated key for your receiver to be able to download file.
+    </p>
+
+    <p>
+        What do you want to do ?
+    </p>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <p>
+            <a routerLink="/upload" routerLinkActive="active">Send a file</a>
+        </p>
+        <p>
+            <a routerLink="/download" routerLinkActive="active">Receive a file</a>
+        </p>
+    </div>
+
+    <p>
+        To share the file send your generated configuration to receiver.
+        Copy receiver generated configuration and connect.
+    </p>
+</div>

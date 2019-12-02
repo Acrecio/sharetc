@@ -1,0 +1,47 @@
+<h1>Securely share your files without server</h1>
+
+<div fxLayout="column" fxLayoutAlign="space-between">
+
+    <p>
+        ShareTC is a service allowing you to securely share file with someone else. It works without any server, your
+        browser will act as the sender, so keep your browser open while sending. The service do not use any server
+        thanks to the RTC peer-to-peer technology.
+        You'll need to communicate the generated key to your sender to be able to download file.
+    </p>
+
+    <div class="form-container">
+        <form [formGroup]="configForm" (ngSubmit)="onSubmitConnect()">
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <mat-form-field appearance="legacy">
+                    <mat-label>
+                        Sender configuration
+                    </mat-label>
+                    <textarea matInput formControlName="sdp_sender">
+                        {{sdp_sender}}
+                    </textarea>
+                    <mat-hint>
+                        Enter the sender configuration and click connect
+                    </mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <textarea matInput readonly formControlName="sdp_receiver">
+                        {{sdp_receiver}}
+                    </textarea>
+                    <mat-hint>
+                        Contains your generated configuration that you need to share with sender
+                    </mat-hint>
+                </mat-form-field>
+                <input type="submit" value="Connect" [disabled]="isConnected">
+            </div>
+        </form>
+    </div>
+
+    <p>
+        To connect copy sender generated configuration and click connect. This will generate your configuration that you should share with sender.
+    </p>
+
+    <p>
+        After that you'll automatically download all sender file named as <em>file.dat</em>.
+    </p>
+
+</div>
