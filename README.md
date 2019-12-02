@@ -1,4 +1,4 @@
-# ShareTC [![Build Status](https://travis-ci.org/FlyersWeb/sharetc.svg?branch=upgrade)](https://travis-ci.org/FlyersWeb/sharetc)
+# ShareTC [![Build Status](https://travis-ci.org/FlyersWeb/sharetc.svg?branch=master)](https://travis-ci.org/FlyersWeb/sharetc)
 
 *share your file securely without server*
 
@@ -35,7 +35,7 @@ We generate the configuration when loading the pages. You need to share it with 
 
 ## Buy me a coffe
 
-[![Buy me a coffee](https://raw.githubusercontent.com/FlyersWeb/angular-symfony/master/buy-me-a-coffee.png)](https://paypal.me/nac1dbois)
+[![Buy me a coffee](https://raw.githubusercontent.com/FlyersWeb/sharetc/master/buy-me-a-coffee.png)](https://paypal.me/nac1dbois)
 
 I'm working on this project in my free time and offering it free of charges. To help me work more on this you can send me tips to buy more coffee :)
 
